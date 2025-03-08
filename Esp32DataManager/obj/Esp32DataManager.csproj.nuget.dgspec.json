@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Lampranthus\\Desktop\\teclado\\Esp32DataManager\\Esp32DataManager.csproj": {}
+    "C:\\Users\\Lampranthus\\Documents\\Master\\Segundo_Semestre\\Proyectos\\ESP32-Serial\\Esp32DataManager\\Esp32DataManager.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Lampranthus\\Desktop\\teclado\\Esp32DataManager\\Esp32DataManager.csproj": {
+    "C:\\Users\\Lampranthus\\Documents\\Master\\Segundo_Semestre\\Proyectos\\ESP32-Serial\\Esp32DataManager\\Esp32DataManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lampranthus\\Desktop\\teclado\\Esp32DataManager\\Esp32DataManager.csproj",
+        "projectUniqueName": "C:\\Users\\Lampranthus\\Documents\\Master\\Segundo_Semestre\\Proyectos\\ESP32-Serial\\Esp32DataManager\\Esp32DataManager.csproj",
         "projectName": "Esp32DataManager",
-        "projectPath": "C:\\Users\\Lampranthus\\Desktop\\teclado\\Esp32DataManager\\Esp32DataManager.csproj",
+        "projectPath": "C:\\Users\\Lampranthus\\Documents\\Master\\Segundo_Semestre\\Proyectos\\ESP32-Serial\\Esp32DataManager\\Esp32DataManager.csproj",
         "packagesPath": "C:\\Users\\Lampranthus\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lampranthus\\Desktop\\teclado\\Esp32DataManager\\obj\\",
+        "outputPath": "C:\\Users\\Lampranthus\\Documents\\Master\\Segundo_Semestre\\Proyectos\\ESP32-Serial\\Esp32DataManager\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lampranthus\\AppData\\Roaming\\NuGet\\NuGet.Config"

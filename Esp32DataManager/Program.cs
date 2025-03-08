@@ -15,13 +15,13 @@ public class MainForm : Form
 
     public MainForm()
     {
-        Text = "ESP32 Data Manager";
-        Width = 400;
+        Text = "Data Manager";
+        Width = 300;
         Height = 200;
 
-        portSelector = new ComboBox { Left = 20, Top = 20, Width = 150 };
-        getDataButton = new Button { Text = "Obtener Datos", Left = 200, Top = 20, Width = 150 };
-        deleteDataButton = new Button { Text = "Borrar Datos", Left = 200, Top = 60, Width = 150 };
+        portSelector = new ComboBox { Text = "Puerto", Left = 100, Top = 30, Width = 100 };
+        getDataButton = new Button { Text = "Descargar Datos", Left = 75, Top = 70, Width = 150 };
+        deleteDataButton = new Button { Text = "Borrar Datos", Left = 75, Top = 110, Width = 150 };
 
         Controls.Add(portSelector);
         Controls.Add(getDataButton);
@@ -157,7 +157,7 @@ public class MainForm : Form
             string zipFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, zipFileName);
 
             // Pedir contraseña para proteger el archivo ZIP
-            string password = PromptDialog.ShowDialog("Ingrese contraseña para proteger el archivo ZIP:", "Protección de archivo");
+            string password = PromptDialog.ShowDialog("Ingrese clave para el archivo ZIP:", "Protección de archivo");
 
             // Comprimir el .txt con contraseña
             using (FileStream fsOut = File.Create(zipFilePath))

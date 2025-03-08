@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "UaglFeiCB2k=",
+  "dgSpecHash": "1565Rhy5JCE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Lampranthus\\Desktop\\teclado\\Esp32DataManager\\Esp32DataManager.csproj",
+  "projectFilePath": "C:\\Users\\Lampranthus\\Documents\\Master\\Segundo_Semestre\\Proyectos\\ESP32-Serial\\Esp32DataManager\\Esp32DataManager.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lampranthus\\.nuget\\packages\\runtime.android-arm.runtime.native.system.io.ports\\9.0.2\\runtime.android-arm.runtime.native.system.io.ports.9.0.2.nupkg.sha512",
     "C:\\Users\\Lampranthus\\.nuget\\packages\\runtime.android-arm64.runtime.native.system.io.ports\\9.0.2\\runtime.android-arm64.runtime.native.system.io.ports.9.0.2.nupkg.sha512",
