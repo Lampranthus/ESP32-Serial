@@ -135,55 +135,52 @@ public class MainForm : Form
         }
     }
 
-    private void SaveData(string data)
+    private async void SaveData(string data)
     {
         try
         {
-            string txtFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "datos.txt");
-
-            // Eliminar la línea "END_OF_DATA" si está presente
-            var lines = data.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries)
-                            .Where(line => line != "END_OF_DATA")
-                            .ToList();
-
-            // Agregar las etiquetas como primera línea
-            lines.Insert(0, "Fila\tTecla\tFecha\tHora");
-
-            // Guardar el archivo .txt
-            File.WriteAllLines(txtFilePath, lines);
-
-            // Generar nombre único para el archivo ZIP basado en la fecha y hora actual
-            string zipFileName = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + "_datos.zip";
-            string zipFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, zipFileName);
-
-            // Pedir contraseña para proteger el archivo ZIP
-            string password = PromptDialog.ShowDialog("Ingrese clave para el archivo ZIP:", "Protección de archivo");
-
-            // Comprimir el .txt con contraseña
-            using (FileStream fsOut = File.Create(zipFilePath))
-            using (ZipOutputStream zipStream = new ZipOutputStream(fsOut))
+            // Ejecutar la operación en un hilo de fondo
+            await Task.Run(() =>
             {
-                zipStream.SetLevel(9); // Máxima compresión
-                zipStream.Password = password; // Asignar contraseña
+                // Eliminar la línea "END_OF_DATA" si está presente
+                var lines = data.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries)
+                                .Where(line => line != "END_OF_DATA")
+                                .ToList();
 
-                byte[] buffer = File.ReadAllBytes(txtFilePath);
-                ZipEntry entry = new ZipEntry("datos.txt");
-                zipStream.PutNextEntry(entry);
-                zipStream.Write(buffer, 0, buffer.Length);
-                zipStream.CloseEntry();
-            }
+                // Agregar las etiquetas como primera línea
+                lines.Insert(0, "Fila\tTecla\tFecha\tHora");
 
-            // Borrar el archivo .txt para dejar solo el .zip
-            File.Delete(txtFilePath);
+                // Generar nombre único para el archivo ZIP basado en la fecha y hora actual
+                string zipFileName = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + "_datos.zip";
+                string zipFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, zipFileName); // Ruta donde se guarda el archivo
 
-            MessageBox.Show($"Archivo comprimido guardado: {zipFilePath}");
+                // Pedir contraseña para proteger el archivo ZIP
+                string password = PromptDialog.ShowDialog("Ingrese clave:", "Protección de archivo");
+
+                // Comprimir directamente sin crear un archivo txt intermedio
+                using (FileStream fsOut = File.Create(zipFilePath))
+                using (ZipOutputStream zipStream = new ZipOutputStream(fsOut))
+                {
+                    zipStream.SetLevel(9); // Máxima compresión
+                    zipStream.Password = password; // Asignar contraseña
+
+                    // Convertir el contenido modificado (con etiquetas) en bytes
+                    byte[] buffer = Encoding.UTF8.GetBytes(string.Join("\r\n", lines));
+                    ZipEntry entry = new ZipEntry("datos.txt"); // Nombre del archivo dentro del ZIP
+                    zipStream.PutNextEntry(entry);
+                    zipStream.Write(buffer, 0, buffer.Length);
+                    zipStream.CloseEntry();
+                }
+
+                // Mostrar mensaje en el hilo principal después de completar
+                Invoke(new Action(() => MessageBox.Show($"Archivo comprimido guardado: {zipFilePath}")));
+            });
         }
         catch (Exception ex)
         {
             MessageBox.Show($"Error al guardar el archivo: {ex.Message}");
         }
     }
-
 
     private string ReadResponse()
     {

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Esp32DataManager")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+276b7643ac70377ffaa78910d7df62a19f5e91e4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+28e1ce9366e33dd6547416b71d6bd018c3e5e6d4")]
 [assembly: System.Reflection.AssemblyProductAttribute("Esp32DataManager")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Esp32DataManager")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

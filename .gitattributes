@@ -1,0 +1,1 @@
+Esp32DataManager/bin/Release/net9.0-windows/win-x64/publish/Esp32DataManager.exe filter=lfs diff=lfs merge=lfs -text
