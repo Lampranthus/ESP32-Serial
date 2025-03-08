@@ -35,7 +35,7 @@ def obtener_datos():
 
         if any("Acceso denegado" in linea for linea in respuesta):
             print("Acceso denegado. Verifica la contraseña.")
-        elif any("Acceso concedido" in linea for linea in respuesta):
+        elif any("ACCESO_CONCEDIDO" in linea for linea in respuesta):
             print("Acceso concedido. Descargando datos...")
 
             # Obtener la fecha y hora actual para nombrar el archivo
@@ -48,7 +48,7 @@ def obtener_datos():
                 for linea in respuesta:
                     if "END_OF_DATA" in linea:
                         break
-                    if "Acceso concedido" not in linea:
+                    if "ACCESO_CONCEDIDO" not in linea:
                         archivo.write(linea + "\n")
 
             print(f"Datos guardados en: {nombre_archivo}")
@@ -83,9 +83,9 @@ def borrar_datos():
         respuesta = esp.readlines()
         respuesta = [line.decode("utf-8").strip() for line in respuesta]
 
-        if "ARCHIVO ELIMINADO" in respuesta:
+        if "DATOS_ELIMINADO" in respuesta:
             print("Datos eliminados correctamente.")
-        elif "NO HAY DATOS PARA BORRAR" in respuesta:
+        elif "NO_DATOS" in respuesta:
             print("No había datos que borrar.")
         else:
             print("Acceso denegado. Verifica la contraseña.")
